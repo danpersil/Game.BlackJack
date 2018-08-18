@@ -8,23 +8,27 @@ namespace CAPCO.Game.BlackJack.UI.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        private readonly ICacheSetting _cache;
+        private readonly ICache _cache;
+        private readonly IGameApp _gameApp;
 
-        public GameController(ICacheSetting cache)
+        public GameController(ICache cache, IGameApp gameApp)
         {
             _cache = cache;
+            _gameApp = gameApp;
         }
 
         [HttpGet("NewGame/user")]
         public IActionResult NewGame(string user)
         {
-
-            GameSession gameData = new GameSession("Dados Jogo", "01", user);
-            string key = _cache.CreateCache(gameData);
-
-            return Ok(_cache.GetCache(key));
+            var currentGame = _gameApp.NewGame(user, _cache);
+            return Ok(currentGame);
         }
 
-
+        [HttpGet("GetCard/key")]
+        public IActionResult GetCard(string key)
+        {
+            GameSession currentGame = _cache.GetCache(key);
+            return Ok(currentGame);
+        }
     }
 }

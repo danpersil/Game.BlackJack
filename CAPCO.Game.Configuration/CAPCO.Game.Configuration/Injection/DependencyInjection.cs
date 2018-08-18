@@ -8,7 +8,8 @@ namespace CAPCO.Game.Configuration.Injection
     {
         public void Injection(IServiceCollection services)
         {
-            services.AddScoped<ICacheSetting, CacheApp>();
+            services.AddScoped<ICache, CacheApp>();
+            services.AddScoped<IGameApp, GameApp>();
         }
     }
 }

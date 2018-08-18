@@ -4,11 +4,11 @@ namespace CAPCO.Game.BackJack.Domain.Model
 {
     public class GameSession
     {
-        public string GameInfo { get; set; }
+        public GameInfo GameInfo { get; set; }
         public string GameId { get; set; }
         public string UserId { get; set; }
 
-        public GameSession(string gameInfo, string gameId, string userId)
+        public GameSession(GameInfo gameInfo, string gameId, string userId)
         {
             GameInfo = gameInfo;
             GameId = gameId;

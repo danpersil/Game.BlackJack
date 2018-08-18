@@ -2,10 +2,10 @@
 
 namespace CAPCO.Game.BackJack.Application.Interface
 {
-    public interface ICacheSetting
+    public interface ICache
     {
         string CreateCache(GameSession _input);
-        string GetCache(string key);
-        string UpdateCache(GameSession _input);
+        GameSession GetCache(string key);
+        GameSession UpdateCache(GameSession _input);
     }
 }
