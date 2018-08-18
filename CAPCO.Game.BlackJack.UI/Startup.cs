@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using CAPCO.Game.Configuration.Injection;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,8 +26,15 @@ namespace CAPCO.Game.BlackJack.UI
 
             services.AddSwaggerGen(c => c.SwaggerDoc(SystemVersion, new Info { Title = SystemName, Version = SystemVersion }));
 
+            services.AddMemoryCache();
+
             services.AddMvc();
+
+            DependencyInjection _dependency = new DependencyInjection();
+            _dependency.Injection(services);
         }
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

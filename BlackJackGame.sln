@@ -5,9 +5,11 @@ VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAPCO.Game.BlackJack.UI", "CAPCO.Game.BlackJack.UI\CAPCO.Game.BlackJack.UI.csproj", "{8BEA3EA3-718C-4C31-B4BF-2511732D5BFE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAPCO.Game.BackJack.App", "CAPCO.Game.BackJack.App\CAPCO.Game.BackJack.App\CAPCO.Game.BackJack.App.csproj", "{DDB9EFC3-526E-4B7A-B4DA-201EBFB83278}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAPCO.Game.BackJack.Application", "CAPCO.Game.BackJack.App\CAPCO.Game.BackJack.App\CAPCO.Game.BackJack.Application.csproj", "{DDB9EFC3-526E-4B7A-B4DA-201EBFB83278}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAPCO.Game.BackJack.Domain", "CAPCO.Game.BackJack.Domain\CAPCO.Game.BackJack.Domain\CAPCO.Game.BackJack.Domain.csproj", "{26B7A9E9-A3B5-4A54-B0ED-1ECE7E22B221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAPCO.Game.Configuration", "CAPCO.Game.Configuration\CAPCO.Game.Configuration\CAPCO.Game.Configuration.csproj", "{EB682D93-AE74-4A0D-BA14-BCE95D086E5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{26B7A9E9-A3B5-4A54-B0ED-1ECE7E22B221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26B7A9E9-A3B5-4A54-B0ED-1ECE7E22B221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26B7A9E9-A3B5-4A54-B0ED-1ECE7E22B221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB682D93-AE74-4A0D-BA14-BCE95D086E5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB682D93-AE74-4A0D-BA14-BCE95D086E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB682D93-AE74-4A0D-BA14-BCE95D086E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB682D93-AE74-4A0D-BA14-BCE95D086E5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
