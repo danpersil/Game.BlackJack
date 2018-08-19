@@ -1,4 +1,5 @@
 ﻿using CAPCO.Game.BackJack.Application.Interface;
+using CAPCO.Game.BackJack.Domain.Enum;
 using CAPCO.Game.BackJack.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,14 +31,14 @@ namespace CAPCO.Game.BlackJack.UI.Controllers
 
 
         [HttpGet("NextTurn/key/newCard")]
-        public IActionResult GetNewCard(string key, bool needCard)
+        public IActionResult NextTurn(string key, bool needCard)
         {
             GameSession currentGame = _cache.GetCache(key);
 
             if (currentGame != null)
             {
 
-                if (currentGame.GameInfo.GameTable.GameResult == BackJack.Domain.Enum.GameResultEnum.NORESULT)
+                if (currentGame.GameInfo.GameTable.GameResult == GameResultEnum.NORESULT)
                 {
                     currentGame.GameInfo.GameTable = _gameApp
                         .NextTurn(currentGame.GameInfo.GameTable, currentGame.GameInfo.CurrentDeck, needCard);
@@ -45,7 +46,7 @@ namespace CAPCO.Game.BlackJack.UI.Controllers
                     _cache.UpdateCache(currentGame);
                 }
 
-                if (currentGame.GameInfo.GameTable.GameResult != BackJack.Domain.Enum.GameResultEnum.NORESULT)
+                if (currentGame.GameInfo.GameTable.GameResult != GameResultEnum.NORESULT)
                     return Ok(currentGame.GameInfo.GameTable.GetEndGameMessage());
 
                 return Ok(currentGame.GameInfo);

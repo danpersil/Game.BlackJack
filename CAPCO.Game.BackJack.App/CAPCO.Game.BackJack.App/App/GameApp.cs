@@ -44,9 +44,12 @@ namespace CAPCO.Game.BackJack.Application.App
 
             if (hiddenCard == null)
             {
-                selectedCard = currentDeck.GetCardFromDeck();
-                selectedCard.Shown = true;
-                table.Dealer.Cards.Add(selectedCard);
+                if (table.Dealer.Cards.Count() <= 5 || table.Dealer.GetCurrentScore() > 17)
+                {
+                    selectedCard = currentDeck.GetCardFromDeck();
+                    selectedCard.Shown = true;
+                    table.Dealer.Cards.Add(selectedCard);
+                }
             }
             else
                 hiddenCard.Shown = true;
