@@ -24,10 +24,13 @@ namespace CAPCO.Game.BlackJack.UI.Controllers
             return Ok(currentGame);
         }
 
-        [HttpGet("GetCard/key")]
-        public IActionResult GetCard(string key)
+
+        [HttpGet("NextTurn/key/newCard")]
+        public IActionResult GetNewCard(string key, bool newCard)
         {
             GameSession currentGame = _cache.GetCache(key);
+            currentGame.GameInfo.GameTable = _gameApp
+                .NextTurn(currentGame.GameInfo.GameTable, currentGame.GameInfo.CurrentDeck);
             return Ok(currentGame);
         }
     }

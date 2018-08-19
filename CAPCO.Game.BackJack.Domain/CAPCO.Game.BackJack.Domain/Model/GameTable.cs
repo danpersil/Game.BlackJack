@@ -20,10 +20,10 @@ namespace CAPCO.Game.BackJack.Domain.Model
 
             //Player 1
             Player player1 = new Player(userName);
-            Card card1 = currentDeck.GetCardFromDeck(currentDeck.Cards);
-            currentDeck.Cards.Remove(card1);
-            Card card2 = currentDeck.GetCardFromDeck(currentDeck.Cards);
-            currentDeck.Cards.Remove(card2);
+            Card card1 = currentDeck.GetCardFromDeck();
+            card1.Shown = true;
+            Card card2 = currentDeck.GetCardFromDeck();
+            card1.Shown = true;
 
             player1.Cards.Add(card1);
             player1.Cards.Add(card2);
@@ -32,14 +32,11 @@ namespace CAPCO.Game.BackJack.Domain.Model
 
             //Dealer 1
             Player dealer = new Player("Dealer_" + userName);
-            Card cardD1 = currentDeck.GetCardFromDeck(currentDeck.Cards);
-            currentDeck.Cards.Remove(cardD1);
+            Card cardD1 = currentDeck.GetCardFromDeck();
+            Card cardD2 = currentDeck.GetCardFromDeck();
 
-            //One shwon card
-            cardD1.Shown = true;
-
-            Card cardD2 = currentDeck.GetCardFromDeck(currentDeck.Cards);
-            currentDeck.Cards.Remove(cardD2);
+            if (cardD1.CardValue == 10) cardD2.Shown = true;
+            if (cardD2.CardValue == 10) cardD1.Shown = true;
 
             dealer.Cards.Add(cardD1);
             dealer.Cards.Add(cardD2);
@@ -47,6 +44,21 @@ namespace CAPCO.Game.BackJack.Domain.Model
             currentTable.Dealer = dealer;
 
             return currentTable;
+        }
+
+        public GameTable UpdateTable()
+        {
+            int playerScore = Player.Score = Player.GetCurrentScore();
+            int dealerScore = Dealer.Score = Dealer.GetCurrentScore();
+
+            if (playerScore >= 21 && dealerScore < 21)
+                GameResult = GameResultEnum.WIN;
+            if (playerScore == dealerScore)
+                GameResult = GameResultEnum.DRAW;
+            if (dealerScore >= 21 && playerScore < 21)
+                GameResult = GameResultEnum.LOSE;
+
+            return this;
         }
     }
 }

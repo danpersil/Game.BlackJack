@@ -28,17 +28,19 @@ namespace CAPCO.Game.BackJack.Domain.Model
                                     orderby naipe, type
                                     select new Card((CardTypeEnum)type, (NaipeTypeEnum)naipe, false)).ToList();
 
-            cardsList = ShuffleDeck(cardsList);
-
+            Cards = cardsList;
+            Cards = ShuffleDeck();
             return cardsList;
         }
 
-        public List<Card> ShuffleDeck(List<Card> originalDeck) => originalDeck.OrderBy(item => new Random().Next()).ToList();
+        public List<Card> ShuffleDeck() => Cards.OrderBy(item => new Random().Next()).ToList();
 
-        public Card GetCardFromDeck(List<Card> originalDeck)
+        public Card GetCardFromDeck()
         {
-            int r = new Random().Next(originalDeck.Count);
-            return originalDeck[r];
+            int r = new Random().Next(Cards.Count);
+            Card selectedCard = Cards[r];
+            Cards.Remove(selectedCard);
+            return selectedCard;
         }
     }
 }

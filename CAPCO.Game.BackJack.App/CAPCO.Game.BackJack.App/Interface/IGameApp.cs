@@ -7,5 +7,6 @@ namespace CAPCO.Game.BackJack.Application.Interface
         int CheckScore(GameTable table, int player = 1);
         bool EndGame(GameTable table);
         GameInfo NewGame(string user, ICache _cache);
+        GameTable NextTurn(GameTable table, Deck currentDeck);
     }
 }

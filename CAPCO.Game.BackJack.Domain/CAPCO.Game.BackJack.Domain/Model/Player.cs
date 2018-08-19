@@ -18,7 +18,8 @@ namespace CAPCO.Game.BackJack.Domain.Model
 
         public int GetCurrentScore()
         {
-            return Cards.Sum(x => x.CardValue);
+            var shownCards = Cards.FindAll(x => x.Shown).ToList();
+            return shownCards.Sum(x => x.CardValue);
         }
     }
 }
