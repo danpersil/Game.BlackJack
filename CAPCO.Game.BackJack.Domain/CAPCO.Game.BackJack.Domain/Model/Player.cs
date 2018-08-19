@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace CAPCO.Game.BackJack.Domain.Model
 {
@@ -18,8 +17,22 @@ namespace CAPCO.Game.BackJack.Domain.Model
 
         public int GetCurrentScore()
         {
-            var shownCards = Cards.FindAll(x => x.Shown).ToList();
-            return shownCards.Sum(x => x.CardValue);
+            bool changeValue = false;
+            int totalSum = 0;
+
+            List<Card> shownCards = Cards.FindAll(x => x.Shown);
+
+            changeValue = shownCards.FindAll(x => x.CardValue == 10).Count > 0;
+
+            foreach (var item in shownCards)
+            {
+                if (changeValue && item.Type == Enum.CardTypeEnum.Card_7)
+                    totalSum += 11;
+                else
+                    totalSum += item.CardValue;
+            }
+
+            return totalSum;
         }
     }
 }

@@ -1,12 +1,17 @@
 ﻿using System.IO;
+using System.Runtime.Serialization;
 
 namespace CAPCO.Game.BackJack.Domain.Model
 {
     public class GameSession
     {
-        public GameInfo GameInfo { get; set; }
+        [IgnoreDataMember]
         public string GameId { get; set; }
+
+        [IgnoreDataMember]
         public string UserId { get; set; }
+
+        public GameInfo GameInfo { get; set; }
 
         public GameSession(GameInfo gameInfo, string gameId, string userId)
         {

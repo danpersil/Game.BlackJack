@@ -15,7 +15,7 @@ namespace CAPCO.Game.BackJack.Domain.Model
                 switch (Type)
                 {
                     case CardTypeEnum.Card_A:
-                        return 1;
+                        return ChangeValue ? 11 : 1;
                     case CardTypeEnum.Card_2:
                         return 2;
                     case CardTypeEnum.Card_3:
