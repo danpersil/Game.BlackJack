@@ -77,11 +77,13 @@ namespace CAPCO.Game.BackJack.Domain.Model
             int playerScore = Player.Score = Player.GetCurrentScore();
             int dealerScore = Dealer.Score = Dealer.GetCurrentScore();
 
+            if (dealerScore > 21 && playerScore < 21)
+                GameResult = GameResultEnum.WIN;
             if (playerScore >= 21 && playerScore >= dealerScore)
                 GameResult = GameResultEnum.WIN;
             if (playerScore == dealerScore && playerScore >= 21)
                 GameResult = GameResultEnum.DRAW;
-            if (dealerScore >= 21 && playerScore < 21)
+            if (dealerScore == 21 && playerScore < 21)
                 GameResult = GameResultEnum.LOSE;
 
             return this;

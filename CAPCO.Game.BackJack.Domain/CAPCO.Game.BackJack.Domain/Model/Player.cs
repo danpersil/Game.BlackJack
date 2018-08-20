@@ -26,7 +26,7 @@ namespace CAPCO.Game.BackJack.Domain.Model
 
             foreach (var item in shownCards)
             {
-                if (changeValue && item.Type == Enum.CardTypeEnum.Card_7)
+                if (changeValue && item.Type == Enum.CardTypeEnum.Card_A)
                     totalSum += 11;
                 else
                     totalSum += item.CardValue;

@@ -1,22 +1,21 @@
 ﻿using CAPCO.Game.BackJack.Application.Interface;
 using CAPCO.Game.BackJack.Domain.Model;
+using CAPCO.Game.BackJack.Infra.Interface;
+using System;
 using System.Linq;
 
 namespace CAPCO.Game.BackJack.Application.App
 {
     public class GameApp : IGameApp
     {
-        public int CheckScore(GameTable table)
+        private readonly ICacheInfra _cache;
+
+        public GameApp(ICacheInfra cache)
         {
-            throw new System.NotImplementedException();
+            _cache = cache;
         }
 
-        public bool EndGame(GameTable table)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public GameInfo NewGame(string user, ICache _cache)
+        public GameInfo NewGame(string user)
         {
             Deck currentDeck = new Deck();
             GameTable currentTable = new GameTable();
@@ -31,31 +30,39 @@ namespace CAPCO.Game.BackJack.Application.App
 
         public GameTable NextTurn(GameTable table, Deck currentDeck, bool needCard)
         {
-            Card selectedCard = null;
-
-            if (needCard)
+            if (table.GameResult == Domain.Enum.GameResultEnum.NORESULT)
             {
-                selectedCard = currentDeck.GetCardFromDeck();
-                selectedCard.Shown = true;
-                table.Player.Cards.Add(selectedCard);
-            }
+                Card selectedCard = null;
 
-            Card hiddenCard = table.Dealer.Cards.FirstOrDefault(x => !x.Shown);
-
-            if (hiddenCard == null)
-            {
-                if (table.Dealer.Cards.Count() <= 5 || table.Dealer.GetCurrentScore() > 17)
+                if (needCard)
                 {
                     selectedCard = currentDeck.GetCardFromDeck();
                     selectedCard.Shown = true;
-                    table.Dealer.Cards.Add(selectedCard);
+                    table.Player.Cards.Add(selectedCard);
                 }
-            }
-            else
-                hiddenCard.Shown = true;
 
+                Card hiddenCard = table.Dealer.Cards.FirstOrDefault(x => !x.Shown);
+
+                if (hiddenCard == null)
+                {
+                    if (table.Dealer.Cards.Count() < 5 || table.Dealer.GetCurrentScore() <= 17)
+                    {
+                        Random rd = new Random();
+                        selectedCard = currentDeck.GetCardFromDeck();
+                        selectedCard.Shown = rd.Next(0, 2) > 0;
+                        table.Dealer.Cards.Add(selectedCard);
+                    }
+                }
+                else
+                    hiddenCard.Shown = true;
+            }
 
             return table.UpdateTable();
+        }
+
+        public void EndGame()
+        {
+            _cache.RemoveAllCache();
         }
     }
 }

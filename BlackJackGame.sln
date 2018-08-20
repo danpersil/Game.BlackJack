@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAPCO.Game.BackJack.Domain"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAPCO.Game.Configuration", "CAPCO.Game.Configuration\CAPCO.Game.Configuration\CAPCO.Game.Configuration.csproj", "{EB682D93-AE74-4A0D-BA14-BCE95D086E5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAPCO.Game.UnitTests", "UnitTestProject1\CAPCO.Game.UnitTests.csproj", "{4F69AD59-2C1E-4E58-9E52-B48FFD94CBBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAPCO.Game.BackJack.Infra", "CAPCO.Game.BackJack.Infra\CAPCO.Game.BackJack.Infra\CAPCO.Game.BackJack.Infra.csproj", "{7149B024-E721-44CB-90B6-6CC37A08912A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{EB682D93-AE74-4A0D-BA14-BCE95D086E5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB682D93-AE74-4A0D-BA14-BCE95D086E5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB682D93-AE74-4A0D-BA14-BCE95D086E5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F69AD59-2C1E-4E58-9E52-B48FFD94CBBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F69AD59-2C1E-4E58-9E52-B48FFD94CBBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F69AD59-2C1E-4E58-9E52-B48FFD94CBBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F69AD59-2C1E-4E58-9E52-B48FFD94CBBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7149B024-E721-44CB-90B6-6CC37A08912A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7149B024-E721-44CB-90B6-6CC37A08912A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7149B024-E721-44CB-90B6-6CC37A08912A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7149B024-E721-44CB-90B6-6CC37A08912A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,7 @@
 ﻿using CAPCO.Game.BackJack.Application.Interface;
 using CAPCO.Game.BackJack.Domain.Enum;
 using CAPCO.Game.BackJack.Domain.Model;
+using CAPCO.Game.BackJack.Infra.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CAPCO.Game.BlackJack.UI.Controllers
@@ -9,10 +10,10 @@ namespace CAPCO.Game.BlackJack.UI.Controllers
     [ApiController]
     public class GameController : ControllerBase
     {
-        private readonly ICache _cache;
+        private readonly ICacheInfra _cache;
         private readonly IGameApp _gameApp;
 
-        public GameController(ICache cache, IGameApp gameApp)
+        public GameController(ICacheInfra cache, IGameApp gameApp)
         {
             _cache = cache;
             _gameApp = gameApp;
@@ -21,9 +22,9 @@ namespace CAPCO.Game.BlackJack.UI.Controllers
         [HttpGet("NewGame/user")]
         public IActionResult NewGame(string user)
         {
-            var currentGame = _gameApp.NewGame(user, _cache);
+            var currentGame = _gameApp.NewGame(user);
 
-            if (currentGame.GameTable.GameResult != BackJack.Domain.Enum.GameResultEnum.NORESULT)
+            if (currentGame.GameTable.GameResult != GameResultEnum.NORESULT)
                 return Ok(currentGame.GameTable.GetEndGameMessage());
 
             return Ok(currentGame);
@@ -47,12 +48,16 @@ namespace CAPCO.Game.BlackJack.UI.Controllers
                 }
 
                 if (currentGame.GameInfo.GameTable.GameResult != GameResultEnum.NORESULT)
+                {
+                    _gameApp.EndGame();
                     return Ok(currentGame.GameInfo.GameTable.GetEndGameMessage());
+                }
 
                 return Ok(currentGame.GameInfo);
             }
             else
                 return BadRequest("Reinicie o jogo");
         }
+
     }
 }

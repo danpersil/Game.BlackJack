@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\CAPCO.Game.BackJack.Domain\CAPCO.Game.BackJack.Domain\CAPCO.Game.BackJack.Domain.csproj" />
-    <ProjectReference Include="..\..\CAPCO.Game.BackJack.Infra\CAPCO.Game.BackJack.Infra\CAPCO.Game.BackJack.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>
