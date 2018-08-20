@@ -112,14 +112,14 @@ namespace CAPCO.Game.UnitTests
         }
 
         [TestMethod]
-        public void PlayerShouldWinIfScores21OrMore()
+        public void PlayerShouldLoseIfScores21OrMore()
         {
             GameInfo gameinfo = _target.NewGame("Teste");
             bool endmatch = false;
 
             while (!endmatch)
             {
-                if (gameinfo.GameTable.Player.GetCurrentScore() > 20 && gameinfo.GameTable.Dealer.GetCurrentScore() < 21)
+                if (gameinfo.GameTable.Player.GetCurrentScore() > 21 && gameinfo.GameTable.Dealer.GetCurrentScore() < 21)
                     endmatch = true;
 
                 if (!endmatch)
@@ -131,7 +131,7 @@ namespace CAPCO.Game.UnitTests
                 }
             }
 
-            Assert.IsTrue(gameinfo.GameTable.GameResult == GameResultEnum.WIN);
+            Assert.IsTrue(gameinfo.GameTable.GameResult == GameResultEnum.LOSE);
         }
 
         #endregion "Player"
