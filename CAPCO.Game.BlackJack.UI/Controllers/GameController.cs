@@ -38,7 +38,6 @@ namespace CAPCO.Game.BlackJack.UI.Controllers
 
             if (currentGame != null)
             {
-
                 if (currentGame.GameInfo.GameTable.GameResult == GameResultEnum.NORESULT)
                 {
                     currentGame.GameInfo.GameTable = _gameApp
@@ -49,7 +48,6 @@ namespace CAPCO.Game.BlackJack.UI.Controllers
 
                 if (currentGame.GameInfo.GameTable.GameResult != GameResultEnum.NORESULT)
                 {
-                    _gameApp.EndGame();
                     return Ok(currentGame.GameInfo.GameTable.GetEndGameMessage());
                 }
 

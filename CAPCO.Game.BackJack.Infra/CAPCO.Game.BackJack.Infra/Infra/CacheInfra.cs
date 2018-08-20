@@ -17,22 +17,16 @@ namespace CAPCO.Game.BackJack.Infra.Infra
         {
             var cacheKey = string.Format("{0}{1}", CacheKeys.GameSession, _input.GetConfigKey());
 
-            using (_cache)
-            {
-                if (!_cache.TryGetValue(cacheKey, out string gameInfo))
-                    _cache.Set(cacheKey, _input);
-            }
+            if (!_cache.TryGetValue(cacheKey, out string gameInfo))
+                _cache.Set(cacheKey, _input);
 
             return cacheKey;
         }
 
         public GameSession GetCache(string key)
         {
-            using (_cache)
-            {
-                _cache.TryGetValue(key, out GameSession gameInfo);
-                return gameInfo;
-            }
+            _cache.TryGetValue(key, out GameSession gameInfo);
+            return gameInfo;
         }
 
         public void RemoveAllCache()
@@ -44,13 +38,10 @@ namespace CAPCO.Game.BackJack.Infra.Infra
         {
             var cacheKey = string.Format("{0}{1}", CacheKeys.GameSession, _input.GetConfigKey());
 
-            using (_cache)
-            {
-                if (_cache.TryGetValue(cacheKey, out GameSession gameInfo))
-                    _cache.Set(cacheKey, _input);
+            if (_cache.TryGetValue(cacheKey, out GameSession gameInfo))
+                _cache.Set(cacheKey, _input);
 
-                return gameInfo;
-            }
+            return gameInfo;
         }
     }
 }
