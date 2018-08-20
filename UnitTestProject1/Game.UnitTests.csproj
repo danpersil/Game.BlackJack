@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CAPCO.Game.BlackJack.UI\CAPCO.Game.BlackJack.UI.csproj" />
+    <ProjectReference Include="..\CAPCO.Game.BlackJack.UI\Game.BlackJack.UI.csproj" />
   </ItemGroup>
 
 </Project>

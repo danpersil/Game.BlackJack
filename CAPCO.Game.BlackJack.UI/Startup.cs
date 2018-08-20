@@ -20,9 +20,9 @@ namespace CAPCO.Game.BlackJack.UI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            SystemVersion = "Versão 0.0.1";
+            SystemVersion = "Versão 1.0.0";
 
-            SystemName = "CAPCO - Game - BlackJack";
+            SystemName = "Game - BlackJack";
 
             services.AddSwaggerGen(c => c.SwaggerDoc(SystemVersion, new Info { Title = SystemName, Version = SystemVersion }));
 

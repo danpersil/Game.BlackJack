@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CAPCO.Game.BackJack.App\CAPCO.Game.BackJack.App\CAPCO.Game.BackJack.Application.csproj" />
-    <ProjectReference Include="..\CAPCO.Game.BackJack.Domain\CAPCO.Game.BackJack.Domain\CAPCO.Game.BackJack.Domain.csproj" />
-    <ProjectReference Include="..\CAPCO.Game.Configuration\CAPCO.Game.Configuration\CAPCO.Game.Configuration.csproj" />
+    <ProjectReference Include="..\CAPCO.Game.BackJack.App\CAPCO.Game.BackJack.App\Game.BackJack.Application.csproj" />
+    <ProjectReference Include="..\CAPCO.Game.BackJack.Domain\CAPCO.Game.BackJack.Domain\Game.BackJack.Domain.csproj" />
+    <ProjectReference Include="..\CAPCO.Game.Configuration\CAPCO.Game.Configuration\Game.Configuration.csproj" />
   </ItemGroup>
 
 </Project>
